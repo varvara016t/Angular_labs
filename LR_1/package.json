@@ -1,0 +1,14 @@
+{
+    "name": "university-data-lab",
+    "version": "1.0.0",
+    "description": "Лабораторная работа №1 - Загрузка данных об университете с использованием XMLHttpRequest",
+    "main": "index.js",
+    "scripts": {
+      "build": "tsc",
+      "start": "lite-server"
+    },
+    "devDependencies": {
+      "lite-server": "^2.6.1",
+      "typescript": "^4.9.5"
+    }
+  }

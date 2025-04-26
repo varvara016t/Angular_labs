@@ -1,0 +1,79 @@
+{
+    "name": "Самарский национальный исследовательский университет имени академика С.П. Королёва",
+    "established": 1942,
+    "accredited": true,
+    "location": {
+      "city": "Самара",
+      "address": "Московское шоссе, 34",
+      "coordinates": {
+        "latitude": 53.212141,
+        "longitude": 50.179131
+      }
+    },
+    "students": 17800,
+    "international_students": 1200,
+    "faculties": [
+      {
+        "name": "Институт информатики и кибернетики",
+        "departments": [
+          "Кафедра информационных систем и технологий",
+          "Кафедра программных систем",
+          "Кафедра суперкомпьютеров и общей информатики"
+        ],
+        "students_count": 2800,
+        "has_master_program": true
+      },
+      {
+        "name": "Институт авиационной и ракетно-космической техники",
+        "departments": [
+          "Кафедра конструкции и проектирования летательных аппаратов",
+          "Кафедра космического машиностроения",
+          "Кафедра теплотехники и тепловых двигателей"
+        ],
+        "students_count": 3100,
+        "has_master_program": true
+      },
+      {
+        "name": "Институт экономики и управления",
+        "departments": [
+          "Кафедра менеджмента и организации производства",
+          "Кафедра экономики"
+        ],
+        "students_count": 1500,
+        "has_master_program": true
+      }
+    ],
+    "rankings": {
+      "national": 10,
+      "international": 401
+    },
+    "contacts": {
+      "phone": "+7 (846) 267-43-01",
+      "email": "ssau@ssau.ru",
+      "website": "www.ssau.ru"
+    },
+    "facilities": {
+      "libraries": 7,
+      "sports_complex": true,
+      "dormitories": 12,
+      "canteens": 5
+    },
+    "tuition_fees": {
+      "bachelor": {
+        "local_students": 130000,
+        "international_students": 180000
+      },
+      "master": {
+        "local_students": 150000,
+        "international_students": 210000
+      },
+      "currency": "RUB"
+    },
+    "has_online_courses": true,
+    "notable_alumni": [
+      "Дмитрий Козлов - конструктор ракетно-космической техники",
+      "Александр Кирилин - генеральный директор РКЦ «Прогресс» (2003-2018)",
+      "Виктор Сойфер - президент Самарского университета",
+      "Владимир Аветисян - заместитель председателя правления УК «Роснано»"
+    ]
+  }
