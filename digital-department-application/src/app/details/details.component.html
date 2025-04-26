@@ -1,0 +1,22 @@
+<div class="page-container">
+    <h2>Страница с деталями</h2>
+    
+    <div class="parameter-display">
+      <h3>Параметр ID:</h3>
+      <p>{{ id }}</p>
+    </div>
+    
+    <div class="data-display" *ngIf="data.length > 0">
+      <h3>Данные из JSON (с использованием директивы):</h3>
+      
+      <ul>
+        <li *ngFor="let item of data">
+          <strong>ID:</strong> {{ item.id }}, 
+          <strong>Название:</strong> <span appItalic>{{ item.name }}</span>, 
+          <strong>Описание:</strong> {{ item.description }}
+        </li>
+      </ul>
+    </div>
+    
+    <p *ngIf="data.length === 0">Загрузка данных...</p>
+  </div>
