@@ -1,0 +1,20 @@
+<div class="greeting-container">
+    <h2>Лабораторная работа №2</h2>
+    
+    <div class="input-section">
+      <label for="userName">Введите ваше имя:</label>
+      <input type="text" id="userName" [(ngModel)]="userName" placeholder="Имя">
+      <button (click)="showGreetingMessage()">Поприветствовать</button>
+    </div>
+    
+    <div *ngIf="showGreeting" class="greeting-message">
+      <p>{{ greeting }}</p>
+    </div>
+    
+    <div class="lifecycle-log">
+      <h3>Журнал жизненного цикла компонента:</h3>
+      <ul>
+        <li *ngFor="let log of lifecycleLog">{{ log }}</li>
+      </ul>
+    </div>
+  </div>

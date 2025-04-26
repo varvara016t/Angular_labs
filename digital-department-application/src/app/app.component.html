@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="header">
+    <h1>{{ title }}</h1>
+    <p>Демонстрация жизненного цикла компонента Angular</p>
+  </div>
+  
+  <div class="parent-section">
+    <button (click)="updateParentMessage()">Обновить данные родителя</button>
+    <p>{{ parentMessage }}</p>
+  </div>
+  
+  <app-greeting [parentData]="parentMessage"></app-greeting>
+</div>
