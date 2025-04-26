@@ -1,13 +1,14 @@
 <nav class="navbar">
   <div class="nav-container">
     <div class="nav-logo">
-      <a routerLink="/">Лабораторная №4</a>
+      <a routerLink="/">Лабораторная №5</a>
     </div>
     
     <ul class="nav-links">
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Главная</a></li>
-      <li><a routerLink="/details/0" routerLinkActive="active">Детали</a></li>
+      <li><a routerLink="/details/0" routerLinkActive="active">Детали (Pipe)</a></li>
       <li><a routerLink="/forms" routerLinkActive="active">Формы</a></li>
+      <li><a routerLink="/error-test" routerLinkActive="active">Тест ошибок</a></li>
       <li><a routerLink="/about" routerLinkActive="active">О нас</a></li>
       <li class="theme-toggle">
         <button (click)="toggleTheme()" class="theme-button" [attr.aria-label]="(isDarkMode$ | async) ? 'Переключить на светлую тему' : 'Переключить на темную тему'">

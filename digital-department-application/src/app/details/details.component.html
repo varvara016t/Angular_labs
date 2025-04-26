@@ -1,22 +1,73 @@
 <div class="page-container">
-    <h2>Страница с деталями</h2>
-    
-    <div class="parameter-display">
-      <h3>Параметр ID:</h3>
-      <p>{{ id }}</p>
-    </div>
-    
-    <div class="data-display" *ngIf="data.length > 0">
-      <h3>Данные из JSON (с использованием директивы):</h3>
-      
-      <ul>
-        <li *ngFor="let item of data">
-          <strong>ID:</strong> {{ item.id }}, 
-          <strong>Название:</strong> <span appItalic>{{ item.name }}</span>, 
-          <strong>Описание:</strong> {{ item.description }}
-        </li>
-      </ul>
-    </div>
-    
-    <p *ngIf="data.length === 0">Загрузка данных...</p>
+  <h2>Страница с деталями</h2>
+  
+  <div class="parameter-display">
+    <h3>Параметр ID:</h3>
+    <p>{{ id }}</p>
   </div>
+  
+  <!-- Управление параметрами pipe -->
+  <div class="pipe-controls card">
+    <h3>Настройки pipe truncate</h3>
+    <div class="controls-group">
+      <div>
+        <label>Длина обрезки: {{ truncateLength }}</label>
+        <div class="button-group">
+          <button (click)="decreaseTruncateLength()" class="btn">-10</button>
+          <button (click)="increaseTruncateLength()" class="btn">+10</button>
+        </div>
+      </div>
+      <div>
+        <label>Суффикс: "{{ truncateSuffix }}"</label>
+        <div class="button-group">
+          <button (click)="changeTruncateSuffix()" class="btn">Изменить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Кнопки управления данными -->
+  <div class="action-buttons">
+    <button (click)="refreshData()" class="btn">Обновить данные</button>
+    <button (click)="testError()" class="btn btn-danger">Вызвать ошибку</button>
+  </div>
+  
+  <!-- Индикатор загрузки -->
+  <div *ngIf="loading$ | async" class="loading-indicator">
+    <div class="spinner"></div>
+    <p>Загрузка данных...</p>
+  </div>
+  
+  <!-- Сообщение об ошибке -->
+  <div *ngIf="error$ | async as errorMessage" class="error-message">
+    <strong>Ошибка:</strong> {{ errorMessage }}
+  </div>
+  
+  <!-- Отображение данных из RxJs Observable -->
+  <div class="data-display card" *ngIf="(data$ | async)?.length">
+    <h3>Данные из JSON с применением RxJs:</h3>
+    
+    <ul>
+      <li *ngFor="let item of data$ | async">
+        <div>
+          <strong>ID:</strong> {{ item.id }}
+        </div>
+        <div>
+          <strong>Название:</strong> <span appItalic>{{ item.name }}</span>
+        </div>
+        <div>
+          <!-- Применение pipe с параметрами -->
+          <strong>Описание:</strong> {{ item.description | truncate:truncateLength:truncateSuffix }}
+        </div>
+        <div>
+          <small>Полное описание: {{ item.description }}</small>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Если нет данных и нет загрузки и ошибки -->
+  <div *ngIf="!(loading$ | async) && !(error$ | async) && !(data$ | async)?.length" class="empty-state">
+    <p>Нет данных для отображения</p>
+  </div>
+</div>
