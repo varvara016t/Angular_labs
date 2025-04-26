@@ -1,0 +1,94 @@
+.forms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .page-title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    border-bottom: 2px solid #1976d2;
+    padding-bottom: 10px;
+  }
+  
+  .forms-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  @media (min-width: 1024px) {
+    .forms-layout {
+      flex-direction: row;
+      gap: 30px;
+    }
+    
+    .form-section {
+      flex: 1;
+    }
+  }
+  
+  .form-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .form-section h3 {
+    color: #1976d2;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .books-list {
+    margin-top: 30px;
+  }
+  
+  .books-list h4 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .books-table-container {
+    overflow-x: auto;
+  }
+  
+  .books-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .books-table th, 
+  .books-table td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  
+  .books-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  .books-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .books-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .empty-state {
+    margin: 30px 0;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }

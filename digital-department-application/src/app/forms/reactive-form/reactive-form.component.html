@@ -1,0 +1,87 @@
+<div class="form-container">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="book-form">
+      <div class="form-group">
+        <label for="title">Название книги</label>
+        <input 
+          type="text" 
+          id="title" 
+          formControlName="title" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': submitted && title?.errors}">
+        <div *ngIf="submitted && title?.errors" class="error-feedback">
+          <div *ngIf="title?.errors?.['required']">Название книги обязательно</div>
+          <div *ngIf="title?.errors?.['minlength']">Название должно содержать минимум 2 символа</div>
+          <div *ngIf="title?.errors?.['maxlength']">Название не должно превышать 100 символов</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="author">Автор</label>
+        <input 
+          type="text" 
+          id="author" 
+          formControlName="author" 
+          class="form-control"
+          [ngClass]="{'is-invalid': submitted && author?.errors}">
+        <div *ngIf="submitted && author?.errors" class="error-feedback">
+          <div *ngIf="author?.errors?.['required']">Автор обязателен</div>
+          <div *ngIf="author?.errors?.['minlength']">Имя автора должно содержать минимум 2 символа</div>
+          <div *ngIf="author?.errors?.['maxlength']">Имя автора не должно превышать 50 символов</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="year">Год издания</label>
+        <input 
+          type="number" 
+          id="year" 
+          formControlName="year" 
+          class="form-control"
+          [ngClass]="{'is-invalid': submitted && year?.errors}">
+        <div *ngIf="submitted && year?.errors" class="error-feedback">
+          <div *ngIf="year?.errors?.['required']">Год издания обязателен</div>
+          <div *ngIf="year?.errors?.['min']">Год не может быть меньше 1800</div>
+          <div *ngIf="year?.errors?.['max']">Год не может быть больше текущего</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="genre">Жанр</label>
+        <select 
+          id="genre" 
+          formControlName="genre" 
+          class="form-control"
+          [ngClass]="{'is-invalid': submitted && genre?.errors}">
+          <option value="">Выберите жанр</option>
+          <option *ngFor="let option of genreOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+        <div *ngIf="submitted && genre?.errors" class="error-feedback">
+          <div *ngIf="genre?.errors?.['required']">Выберите жанр книги</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="rating">Рейтинг (1-10)</label>
+        <input 
+          type="number" 
+          id="rating" 
+          formControlName="rating" 
+          class="form-control"
+          min="1" 
+          max="10"
+          [ngClass]="{'is-invalid': submitted && rating?.errors}">
+        <div *ngIf="submitted && rating?.errors" class="error-feedback">
+          <div *ngIf="rating?.errors?.['required']">Рейтинг обязателен</div>
+          <div *ngIf="rating?.errors?.['min']">Рейтинг не может быть меньше 1</div>
+          <div *ngIf="rating?.errors?.['max']">Рейтинг не может быть больше 10</div>
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Сохранить</button>
+        <button type="reset" class="btn-reset">Сбросить</button>
+      </div>
+    </form>
+  </div>

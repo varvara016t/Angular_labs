@@ -1,0 +1,81 @@
+<div class="forms-container">
+    <h2 class="page-title">Формы в Angular</h2>
+    
+    <div class="forms-layout">
+      <!-- Секция с реактивной формой -->
+      <div class="form-section">
+        <h3>Реактивная форма</h3>
+        <app-reactive-form (formSubmit)="onReactiveFormSubmit($event)"></app-reactive-form>
+        
+        <div class="books-list" *ngIf="reactiveBooks.length">
+          <h4>Добавленные книги:</h4>
+          <div class="books-table-container">
+            <table class="books-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Название</th>
+                  <th>Автор</th>
+                  <th>Год</th>
+                  <th>Жанр</th>
+                  <th>Рейтинг</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of reactiveBooks">
+                  <td>{{ book.id }}</td>
+                  <td>{{ book.title }}</td>
+                  <td>{{ book.author }}</td>
+                  <td>{{ book.year }}</td>
+                  <td>{{ book.genre }}</td>
+                  <td>{{ book.rating }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="empty-state" *ngIf="!reactiveBooks.length">
+          <p>Добавьте книгу, используя форму выше</p>
+        </div>
+      </div>
+      
+      <!-- Секция с template-driven формой -->
+      <div class="form-section">
+        <h3>Template-driven форма</h3>
+        <app-template-driven-form (formSubmit)="onTemplateDrivenFormSubmit($event)"></app-template-driven-form>
+        
+        <div class="books-list" *ngIf="templateDrivenBooks.length">
+          <h4>Добавленные книги:</h4>
+          <div class="books-table-container">
+            <table class="books-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Название</th>
+                  <th>Автор</th>
+                  <th>Год</th>
+                  <th>Жанр</th>
+                  <th>Рейтинг</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of templateDrivenBooks">
+                  <td>{{ book.id }}</td>
+                  <td>{{ book.title }}</td>
+                  <td>{{ book.author }}</td>
+                  <td>{{ book.year }}</td>
+                  <td>{{ book.genre }}</td>
+                  <td>{{ book.rating }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="empty-state" *ngIf="!templateDrivenBooks.length">
+          <p>Добавьте книгу, используя форму выше</p>
+        </div>
+      </div>
+    </div>
+  </div>
