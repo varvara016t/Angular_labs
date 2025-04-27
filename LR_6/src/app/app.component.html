@@ -1,0 +1,36 @@
+<!-- src/app/app.component.html -->
+
+<div class="container">
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+    <button class="add-task-btn" (click)="onAddTask()">Добавить задачу</button>
+  </header>
+  
+  <div class="main-content">
+    <!-- Left side - Tasks list -->
+    <div class="content-left">
+      <app-task-list 
+        (taskSelected)="onTaskSelect($event)"
+      ></app-task-list>
+    </div>
+    
+    <!-- Right side - Task form or details -->
+    <div class="content-right">
+      <!-- Show task form when adding or editing -->
+      <app-task-form 
+        *ngIf="isFormVisible"
+        [task]="isEditMode ? selectedTask : null"
+        (taskSaved)="onTaskSaved($event)"
+        (formClosed)="onFormClosed()"
+      ></app-task-form>
+      
+      <!-- Show task details when a task is selected -->
+      <app-task-details 
+        *ngIf="selectedTask && !isFormVisible"
+        [task]="selectedTask"
+        (edit)="onEditTask()"
+        (close)="onDetailsClosed()"
+      ></app-task-details>
+    </div>
+  </div>
+</div>

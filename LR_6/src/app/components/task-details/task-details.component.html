@@ -1,0 +1,65 @@
+<!-- src/app/components/task-details/task-details.component.html -->
+
+<div class="task-details-container" *ngIf="task">
+    <div class="details-header">
+      <div class="details-id">Задача #{{ task.id }}</div>
+      <div class="details-actions">
+        <button class="btn-edit" (click)="onEdit()">Редактировать</button>
+        <button class="btn-close" (click)="onClose()">Закрыть</button>
+      </div>
+    </div>
+    
+    <h2 class="details-title">{{ task.title }}</h2>
+    
+    <div class="details-info">
+      <div class="info-group">
+        <div class="info-label">Тип:</div>
+        <div class="info-value">{{ getTypeLabel(task.type) }}</div>
+      </div>
+      
+      <div class="info-group">
+        <div class="info-label">Приоритет:</div>
+        <div class="info-value" [ngClass]="getPriorityClass(task.priority)">
+          {{ getPriorityLabel(task.priority) }}
+        </div>
+      </div>
+      
+      <div class="info-group">
+        <div class="info-label">Статус:</div>
+        <div class="info-value" [ngClass]="getStatusClass(task.status)">
+          {{ getStatusLabel(task.status) }}
+        </div>
+      </div>
+      
+      <div class="info-group">
+        <div class="info-label">Исполнитель:</div>
+        <div class="info-value">{{ task.assignee || 'Не назначен' }}</div>
+      </div>
+      
+      <div class="info-group">
+        <div class="info-label">Создатель:</div>
+        <div class="info-value">{{ task.creator }}</div>
+      </div>
+      
+      <div class="info-group">
+        <div class="info-label">Создана:</div>
+        <div class="info-value">{{ formatDate(task.createdAt) }}</div>
+      </div>
+      
+      <div class="info-group">
+        <div class="info-label">Обновлена:</div>
+        <div class="info-value">{{ formatDate(task.updatedAt) }}</div>
+      </div>
+    </div>
+    
+    <div class="details-description">
+      <h3>Описание</h3>
+      <div class="description-content">
+        {{ task.description || 'Описание отсутствует' }}
+      </div>
+    </div>
+  </div>
+  
+  <div class="no-task-selected" *ngIf="!task">
+    <p>Выберите задачу из списка для просмотра деталей</p>
+  </div>

@@ -1,0 +1,70 @@
+<!-- src/app/components/task-form/task-form.component.html -->
+
+<div class="task-form-container">
+    <h2>{{ formTitle }}</h2>
+    
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="task-form">
+      <div class="form-group">
+        <label for="type">Тип задачи *</label>
+        <select id="type" name="type" [(ngModel)]="formData.type" required class="form-control">
+          <option *ngFor="let type of taskTypes" [value]="type">
+            {{ type === 'bug' ? 'Ошибка' : 'Задача' }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="priority">Приоритет</label>
+        <select id="priority" name="priority" [(ngModel)]="formData.priority" class="form-control">
+          <option [ngValue]="undefined">Не указан</option>
+          <option *ngFor="let priority of taskPriorities" [value]="priority">
+            {{ priority === 'critical' ? 'Критический' : 
+               priority === 'high' ? 'Высокий' : 
+               priority === 'medium' ? 'Средний' : 'Низкий' }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="status">Статус *</label>
+        <select id="status" name="status" [(ngModel)]="formData.status" required class="form-control">
+          <option *ngFor="let status of taskStatuses" [value]="status">
+            {{ status === 'new' ? 'Новая' : 
+               status === 'in progress' ? 'В работе' : 
+               status === 'testing' ? 'Тестирование' : 'Готово' }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="title">Заголовок *</label>
+        <input type="text" id="title" name="title" [(ngModel)]="formData.title" 
+               required class="form-control" placeholder="Введите заголовок задачи">
+      </div>
+      
+      <div class="form-group">
+        <label for="description">Описание</label>
+        <textarea id="description" name="description" [(ngModel)]="formData.description" 
+                  class="form-control" rows="4" placeholder="Введите описание задачи"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="assignee">Исполнитель</label>
+        <input type="text" id="assignee" name="assignee" [(ngModel)]="formData.assignee" 
+               class="form-control" placeholder="Введите имя исполнителя">
+      </div>
+      
+      <div class="form-group">
+        <label for="creator">Создатель *</label>
+        <input type="text" id="creator" name="creator" [(ngModel)]="formData.creator" 
+               required class="form-control" placeholder="Введите имя создателя">
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" [disabled]="!taskForm.form.valid">
+          {{ editMode ? 'Сохранить' : 'Создать' }}
+        </button>
+        <button type="button" class="btn-cancel" (click)="cancel()">Отмена</button>
+      </div>
+    </form>
+  </div>

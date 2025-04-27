@@ -1,0 +1,163 @@
+/* src/app/components/task-list/task-list.component.css */
+
+.task-list-container {
+    margin: 20px;
+  }
+  
+  .filters-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .search-container {
+    margin-bottom: 10px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .filter-selects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .clear-filters-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .clear-filters-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .tasks-table-container {
+    overflow-x: auto;
+  }
+  
+  .tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .tasks-table th,
+  .tasks-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tasks-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .tasks-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .tasks-table tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .selected-row {
+    background-color: #e6f7ff !important;
+  }
+  
+  .task-title {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .delete-btn {
+    padding: 5px 10px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ff7875;
+  }
+  
+  .no-tasks {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #999;
+  }
+  
+  /* Priority classes */
+  .priority-critical {
+    color: #ff4d4f;
+    font-weight: bold;
+  }
+  
+  .priority-high {
+    color: #fa8c16;
+    font-weight: bold;
+  }
+  
+  .priority-medium {
+    color: #faad14;
+  }
+  
+  .priority-low {
+    color: #52c41a;
+  }
+  
+  /* Status classes */
+  .status-new {
+    color: #1890ff;
+    font-weight: bold;
+  }
+  
+  .status-in-progress {
+    color: #fa8c16;
+    font-weight: bold;
+  }
+  
+  .status-testing {
+    color: #722ed1;
+    font-weight: bold;
+  }
+  
+  .status-done {
+    color: #52c41a;
+    font-weight: bold;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .filter-selects {
+      flex-direction: column;
+    }
+    
+    .filter-select, 
+    .clear-filters-btn {
+      width: 100%;
+    }
+  }

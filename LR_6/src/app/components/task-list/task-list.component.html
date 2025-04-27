@@ -1,0 +1,91 @@
+<!-- src/app/components/task-list/task-list.component.html -->
+
+<div class="task-list-container">
+    <h2>Задачи</h2>
+    
+    <!-- Filters -->
+    <div class="filters-container">
+      <div class="search-container">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Поиск..." class="search-input">
+      </div>
+      
+      <div class="filter-selects">
+        <select [(ngModel)]="typeFilter" class="filter-select">
+          <option value="">Все типы</option>
+          <option *ngFor="let type of taskTypes" [value]="type">
+            {{ type === 'bug' ? 'Ошибка' : 'Задача' }}
+          </option>
+        </select>
+        
+        <select [(ngModel)]="statusFilter" class="filter-select">
+          <option value="">Все статусы</option>
+          <option *ngFor="let status of taskStatuses" [value]="status">
+            {{ status === 'new' ? 'Новая' : 
+               status === 'in progress' ? 'В работе' : 
+               status === 'testing' ? 'Тестирование' : 'Готово' }}
+          </option>
+        </select>
+        
+        <select [(ngModel)]="priorityFilter" class="filter-select">
+          <option value="">Все приоритеты</option>
+          <option *ngFor="let priority of taskPriorities" [value]="priority">
+            {{ priority === 'critical' ? 'Критический' : 
+               priority === 'high' ? 'Высокий' : 
+               priority === 'medium' ? 'Средний' : 'Низкий' }}
+          </option>
+        </select>
+        
+        <button (click)="clearFilters()" class="clear-filters-btn">Сбросить фильтры</button>
+      </div>
+    </div>
+    
+    <!-- Tasks table -->
+    <div class="tasks-table-container">
+      <table class="tasks-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Тип</th>
+            <th>Приоритет</th>
+            <th>Статус</th>
+            <th>Заголовок</th>
+            <th>Исполнитель</th>
+            <th>Создатель</th>
+            <th>Дата создания</th>
+            <th>Последнее изменение</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="(tasks | taskFilter:filters).length === 0">
+            <td colspan="10" class="no-tasks">Нет задач, соответствующих фильтрам</td>
+          </tr>
+          <tr *ngFor="let task of tasks | taskFilter:filters" 
+              [ngClass]="{'selected-row': selectedTask?.id === task.id}"
+              (click)="selectTask(task)">
+            <td>{{ task.id }}</td>
+            <td>{{ task.type === 'bug' ? 'Ошибка' : 'Задача' }}</td>
+            <td [ngClass]="getPriorityClass(task.priority)">
+              {{ task.priority === 'critical' ? 'Критический' : 
+                 task.priority === 'high' ? 'Высокий' : 
+                 task.priority === 'medium' ? 'Средний' : 
+                 task.priority === 'low' ? 'Низкий' : '—' }}
+            </td>
+            <td [ngClass]="getStatusClass(task.status)">
+              {{ task.status === 'new' ? 'Новая' : 
+                 task.status === 'in progress' ? 'В работе' : 
+                 task.status === 'testing' ? 'Тестирование' : 'Готово' }}
+            </td>
+            <td class="task-title">{{ task.title }}</td>
+            <td>{{ task.assignee || '—' }}</td>
+            <td>{{ task.creator }}</td>
+            <td>{{ formatDate(task.createdAt) }}</td>
+            <td>{{ formatDate(task.updatedAt) }}</td>
+            <td>
+              <button (click)="deleteTask(task.id, $event)" class="delete-btn">Удалить</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
